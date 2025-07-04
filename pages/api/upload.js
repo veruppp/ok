@@ -32,6 +32,6 @@ export default async function handler(req, res) {
     });
     fs.writeFileSync(dataFile, JSON.stringify(oldData, null, 2));
 
-    return res.status(200).json({ url: `/e/${slug}` });
+    res.status(200).json({ url: `/e/${slug}` });
   });
 }
