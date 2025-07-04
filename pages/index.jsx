@@ -24,7 +24,8 @@ export default function Home() {
 
     xhr.onload = () => {
       const res = JSON.parse(xhr.responseText);
-      setLink(window.location.origin + res.url);
+      const fullLink = `${location.protocol}//${location.host}${res.url}`;
+setLink(fullLink);
     };
 
     xhr.send(formData);
