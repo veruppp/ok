@@ -23,12 +23,14 @@ export default function Home() {
     };
 
     xhr.onload = () => {
-      const res = JSON.parse(xhr.responseText);
-      if (res.url) {
-        const fullLink = `${window.location.origin}${res.url}`;
-        setLink(fullLink);
-      }
-    };
+  const res = JSON.parse(xhr.responseText);
+  if (res.url) {
+    const fullLink = `${window.location.origin}${res.url}`;
+    setLink(fullLink);
+  } else {
+    console.error("URL not found in response:", res);
+  }
+};
 
     xhr.send(formData);
   };
