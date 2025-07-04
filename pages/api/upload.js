@@ -16,6 +16,7 @@ export default async function handler(req, res) {
     const file = files.file[0];
     const ext = path.extname(file.originalFilename);
     const slug = generateSlug();
+    const slug = Date.now().toString(36) + path.extname(file.originalFilename);
     const newName = slug + ext;
     const newPath = path.join("public/uploads", newName);
     fs.renameSync(file.filepath, newPath);
@@ -32,6 +33,6 @@ export default async function handler(req, res) {
     });
     fs.writeFileSync(dataFile, JSON.stringify(oldData, null, 2));
 
-    res.status(200).json({ url: `/e/${slug}` });
+    return res.status(200).json({ url: `/e/${slug}` });
   });
 }
