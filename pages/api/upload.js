@@ -16,7 +16,6 @@ export default async function handler(req, res) {
     const file = files.file[0];
     const ext = path.extname(file.originalFilename);
     const slug = generateSlug();
-    const slug = Date.now().toString(36) + path.extname(file.originalFilename);
     const newName = slug + ext;
     const newPath = path.join("public/uploads", newName);
     fs.renameSync(file.filepath, newPath);
